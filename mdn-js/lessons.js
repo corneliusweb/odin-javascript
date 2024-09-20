@@ -22,15 +22,18 @@ function rateSong() {
 	const userRating = +prompt('What do you rate Mockingbird?');
 	let output = document.querySelector('.display');
 
-	if (userRating >= 6) {
-		output.textContent = `Song is good! I rate it ${
-			(userRating / maxRating) * 100
-		}%`;
+	if (typeof userRating === 'number') {
+		if (userRating <= maxRating && userRating > 0) {
+			output.textContent = `The song Mockingbird is good. I rate it ${
+				(userRating / maxRating) * 100
+			}%`;
+		} else {
+			output.textContent =
+				'Invalid rating! Please enter a number between 0 and 10.';
+		}
 	} else {
-		output.textContent = `Song is below par! I rate it ${
-			(userRating / maxRating) * 100
-		}%`;
-   }
+		output.textContent = 'Invalid input! Please enter a number.';
+	}
 }
 
 const rateButton = document.querySelector('.rate-button');

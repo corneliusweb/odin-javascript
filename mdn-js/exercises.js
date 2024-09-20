@@ -1,5 +1,5 @@
 /** FILTERING STRINGS --
- * 
+ *
  * The task is to select and list only the strings that has 'Christmas' from the provided array.
  */
 
@@ -26,10 +26,8 @@ for (const greeting of greetings) {
 	}
 }
 
-
-
 /** CAPITALIZATION -- fixing the capitalization
- * 
+ *
  * The task is to fix the casing of the city names from the provided cities array.
  */
 
@@ -47,17 +45,15 @@ for (const city of cities) {
 	);
 	const result = capitalizedCity;
 
-   // Create lists and append the returned values
+	// Create lists and append the returned values
 	const listItem = document.createElement('li');
 	listItem.textContent = result;
 	cityList.appendChild(listItem);
 	body.appendChild(cityList);
 }
 
-
-
 /** TRAIN STATION EXERCISE -- forming new words from old ones
- * 
+ *
  * The task is to extract the train code name and the station name from the stations array.
  * To concatenate them to form eg; MAN: Manchester Piccadilly.
  */
@@ -75,11 +71,11 @@ const stations = [
 
 for (const station of stations) {
 	const stationCode = station.slice(0, 3); // Get the first three letters.
-	const indexOfSemiColon = station.indexOf(';');  // Get the index of each ';' in the array.
-	const stationName = station.slice(indexOfSemiColon + 1);  // Slice from the index of each ';'.
+	const indexOfSemiColon = station.indexOf(';'); // Get the index of each ';' in the array.
+	const stationName = station.slice(indexOfSemiColon + 1); // Slice from the index of each ';'.
 	const stationCodeAndName = `${stationCode}: ${stationName}`;
 
-   // Create lists and append returned values
+	// Create lists and append returned values
 	const listItem = document.createElement('li');
 	listItem.textContent = stationCodeAndName;
 	trainList.appendChild(listItem);
