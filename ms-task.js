@@ -30,3 +30,6 @@ for (const grade of allStudents) {
 	}
 }
 console.log(studentsWhoPass);
+
+let randomNumber = Math.floor(Math.random() * 100) + 1;
+console.log(randomNumber)
