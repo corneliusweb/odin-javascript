@@ -102,3 +102,34 @@ while (i <= 10 && i >= 0) {
 	i--;
 	// output.appendChild(para);
 }
+
+const people = [
+	'Chris',
+	'Anne',
+	'Colin',
+	'Terri',
+	'Phil',
+	'Lola',
+	'Sam',
+	'Kay',
+	'Bruce',
+];
+
+const admitted = document.querySelector('.admitted');
+const refused = document.querySelector('.refused');
+admitted.textContent = 'Admit: ';
+refused.textContent = 'Refuse: ';
+
+// loop starts here
+
+for (const person of people) {
+	if (person === 'Phil' || person === 'Lola') {
+		console.log(`Refused: ${person}`);
+		refused.textContent += ` ${person},`;
+	} else {
+		console.log(`Admitted: ${person}`);
+		admitted.textContent += ` ${person},`;
+	}
+}
+admitted.textContent = admitted.textContent.slice(0, admitted.textContent.length - 1) + '.';
+refused.textContent = refused.textContent.slice(0, refused.textContent.length - 1) + '.';
