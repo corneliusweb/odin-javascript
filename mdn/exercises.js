@@ -81,3 +81,24 @@ for (const station of stations) {
 	trainList.appendChild(listItem);
 	body.appendChild(trainList);
 }
+
+// const output = document.querySelector('.output');
+// output.textContent = '';
+
+let i = 10;
+
+while (i <= 10 && i >= 0) {
+	//const para = document.createElement('p');
+	if (i === 10) {
+		//para.textContent = 'Countdown 10';
+		console.log('Countdown 10');
+	} else if (i === 0) {
+		//para.textContent = 'Blast off!!';
+		console.log('Blast off!!');
+	} else {
+		//para.textContent = i;
+		console.log(i);
+	}
+	i--;
+	// output.appendChild(para);
+}
