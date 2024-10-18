@@ -14,13 +14,11 @@ console.log(multiply(67, 3));
  * Write a function called capitalize that takes a string and returns that string with only the first letter capitalized. Make sure that it can take strings that are lowercase, UPPERCASE or BoTh.
  */
 function capitalize(str) {
-	// Convert all the strings to lowercase
+	
 	const lowercase = str.toLowerCase();
-	// Get the first letter of the lowercased strings by index and store in a variable
 	const firstLetter = lowercase[0];
-	// Replace the first letter of the lowercased string by referencing its index, and call the toUpperCase function
 	const converted = lowercase.replace(firstLetter, firstLetter.toUpperCase());
-	// Return the result of the processes.
+	
 	return converted;
 }
 console.log(capitalize('hELlo'));
@@ -58,10 +56,10 @@ function getInput(input) {
 }
 
 function checkFizzBuzz(num) {
-	// First check if the getInput function returned `undefined`
+	// make sure getInput didn't return `undefined`
    if (typeof num !== 'undefined') {
       
-		//Create a loop to run from the user input till 0
+		//Loop through the user input till 0
 		for (let c = 1; c <= num; c++) {
 			if (c % 3 === 0 && c % 5 === 0) {
 				console.log('FizBuzz');
@@ -73,7 +71,7 @@ function checkFizzBuzz(num) {
 				console.log(c);
 			}
 		}
-		// if getInput function returned `undefined`, log this
+		// if getInput returned `undefined`, log this
 	} else {
 		console.log("Hey man! Can't you read?");
 	}
