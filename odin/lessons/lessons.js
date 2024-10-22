@@ -14,11 +14,10 @@ console.log(multiply(67, 3));
  * Write a function called capitalize that takes a string and returns that string with only the first letter capitalized. Make sure that it can take strings that are lowercase, UPPERCASE or BoTh.
  */
 function capitalize(str) {
-	
 	const lowercase = str.toLowerCase();
 	const firstLetter = lowercase[0];
 	const converted = lowercase.replace(firstLetter, firstLetter.toUpperCase());
-	
+
 	return converted;
 }
 console.log(capitalize('hELlo'));
@@ -57,8 +56,7 @@ function getInput(input) {
 
 function checkFizzBuzz(num) {
 	// make sure getInput didn't return `undefined`
-   if (typeof num !== 'undefined') {
-      
+	if (typeof num !== 'undefined') {
 		//Loop through the user input till 0
 		for (let c = 1; c <= num; c++) {
 			if (c % 3 === 0 && c % 5 === 0) {
