@@ -74,4 +74,10 @@ function checkFizzBuzz(num) {
 		console.log("Hey man! Can't you read?");
 	}
 }
-checkFizzBuzz(getInput(+'8' + +'8'));
+//checkFizzBuzz(getInput(+'8' + +'8'));
+
+const btn = document.querySelector('.btn');
+btn.addEventListener('click', (e) => {
+	e.preventDefault();
+	console.log(e);
+});
