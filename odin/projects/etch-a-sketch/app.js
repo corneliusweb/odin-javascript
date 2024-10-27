@@ -3,19 +3,27 @@ const container = document.querySelector('.container');
 function renderGrid(num) {
 	const gridNum = num * num;
 
-   const currentGrid = document.createElement('div');
-   currentGrid.classList.add('current-grid')
+	const currentGrid = document.createElement('div');
+	currentGrid.classList.add('current-grid');
 	container.appendChild(currentGrid);
 
 	let i = 1;
 	while (i <= gridNum) {
-		const grid = document.createElement('div');
 		const gridWidth = Number((95 / num).toFixed(2)); // dividing by 95% instead of 100% makes sure that the gapping is accounted for.
+
+		const box = document.createElement('div');
 		console.log(gridWidth);
-		grid.style.flex = `1 1 ${gridWidth}%`;
-		grid.style.aspectRatio = '1/1';
-		grid.style.backgroundColor = '#222';
-		currentGrid.appendChild(grid);
+		box.style.flex = `1 1 ${gridWidth}%`;
+		box.style.aspectRatio = '1/1';
+		box.style.backgroundColor = '#222';
+		currentGrid.appendChild(box);
+
+		box.addEventListener('mouseover', () => {
+			box.style.backgroundColor = 'red';
+		});
+		box.addEventListener('mouseout', () => {
+			box.style.backgroundColor = '#222';
+		});
 
 		i++;
 	}
