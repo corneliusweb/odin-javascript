@@ -6,13 +6,16 @@
 
 body{
    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-   width: 100%;
    padding: 2px;
 }
 
-.container .current-grid {
-   display: flex;
-   flex-wrap: wrap;
-   margin-top: 20px;
-   gap: 1px;
+button{
+   display: block;
+   padding: 15px 10px;
+   margin: 10px;
+   background-color: deepskyblue;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   font-weight: 600;
 }
