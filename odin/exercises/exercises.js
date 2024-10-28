@@ -41,7 +41,6 @@ div.appendChild(divPara);
 
 body.appendChild(div);
 
-
 /** function sumOfTripledEvens(array) {
 	let sum = 0;
 	for (let i = 0; i < array.length; i++) {
@@ -58,15 +57,24 @@ body.appendChild(div);
 }
 */
 
-let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 // first, filter even numbers
 // second, map to times by 3
 // lastly, reduce to sum all
 
-let filteredArr = arr.filter((num) => num % 2 === 0);
-let mappedArray = filteredArr.map((num) => num * 3);
-let reducedArr = mappedArray.reduce((total, num) => {
-   return total + num;
-}, 0)
-console.log(reducedArr)
+// let filteredArr = arr.filter((num) => num % 2 === 0);
+// let mappedArray = filteredArr.map((num) => num * 3);
+// let reducedArr = mappedArray.reduce((total, num) => {
+//    return total + num;
+// }, 0)
+// console.log(reducedArr)
+
+
+function sumOfTripledEvens(arr) {
+	const filteredArr = arr.filter((num) => num % 2 === 0);
+	const mappedArray = filteredArr.map((num) => num * 3);
+   const reducedArr = mappedArray.reduce((acc, curr) => acc + curr, 0);
+   return reducedArr;
+}
+console.log(sumOfTripledEvens(arr));
