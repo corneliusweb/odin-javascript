@@ -15,6 +15,12 @@ function renderGrid(num) {
 			`style`,
 			`width: calc(${itemSize}% - ${gap}px); padding-bottom: ${itemSize}%; background-color: #222;`
 		);
+		item.addEventListener('mouseover', () => {
+			item.style.backgroundColor = 'deeppink';
+		});
+		item.addEventListener('mouseout', () => {
+			item.style.backgroundColor = '#222';
+		});
 		container.appendChild(item);
 		i++;
 	}
