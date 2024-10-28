@@ -1,30 +1,21 @@
 const container = document.querySelector('.container');
+container.setAttribute(`style`, `display: flex; flex-wrap: wrap; width: 100%;`);
+
+const gap = 2;
+container.style.gap = `${gap}px`;
 
 function renderGrid(num) {
 	const gridNum = num * num;
-
-	const currentGrid = document.createElement('div');
-	currentGrid.classList.add('current-grid');
-	container.appendChild(currentGrid);
+	const itemSize = Number((100 / num).toFixed(2));
 
 	let i = 1;
 	while (i <= gridNum) {
-		const gridWidth = Number((95 / num).toFixed(2)); // dividing by 95% instead of 100% makes sure that the gapping is accounted for.
-
-		const box = document.createElement('div');
-		console.log(gridWidth);
-		box.style.flex = `1 1 ${gridWidth}%`;
-		box.style.aspectRatio = '1/1';
-		box.style.backgroundColor = '#222';
-		currentGrid.appendChild(box);
-
-		box.addEventListener('mouseover', () => {
-			box.style.backgroundColor = 'red';
-		});
-		box.addEventListener('mouseout', () => {
-			box.style.backgroundColor = '#222';
-		});
-
+		const item = document.createElement('div');
+		item.setAttribute(
+			`style`,
+			`width: calc(${itemSize}% - ${gap}px); padding-bottom: ${itemSize}%; background-color: #222;`
+		);
+		container.appendChild(item);
 		i++;
 	}
 }
@@ -36,7 +27,7 @@ button.addEventListener('click', () => {
 	if (!num) alert('Enter a valid number');
 	if (num > 100) alert('Enter a number less than or equal to 100');
 
-	if (num <= 100) {
+	if (num <= 100 && num > 0) {
 		renderGrid(num);
 	}
 });
