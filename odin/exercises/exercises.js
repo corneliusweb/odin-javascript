@@ -70,11 +70,21 @@ const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 // }, 0)
 // console.log(reducedArr)
 
-
 function sumOfTripledEvens(arr) {
 	const filteredArr = arr.filter((num) => num % 2 === 0);
 	const mappedArray = filteredArr.map((num) => num * 3);
-   const reducedArr = mappedArray.reduce((acc, curr) => acc + curr, 0);
-   return reducedArr;
+	const reducedArr = mappedArray.reduce((acc, curr) => acc + curr, 0);
+	return reducedArr;
 }
 console.log(sumOfTripledEvens(arr));
+
+function camelize(str) {
+	const splitStr = str.split('-');
+	const upperCase = splitStr.map((word, index) =>
+		index === 0 ? word : word[0].toUpperCase() + word.slice(1)
+	);
+	const camelized = upperCase.join('');
+	return camelized;
+}
+console.log(camelize('list-style-image'));
+
