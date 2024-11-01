@@ -88,3 +88,58 @@ function camelize(str) {
 }
 console.log(camelize('list-style-image'));
 
+const arr1 = [5, 3, 8, 1];
+
+function filterRange(arr, a, b) {
+	return arr.filter((item) => item >= a && item <= b);
+}
+const filtered = filterRange(arr1, 1, 4);
+console.log(filtered);
+console.log(arr1);
+
+// function filterRangeInPlace(arr, a, b) {
+//    arr.filter
+// }
+
+let arr2 = [5, 2, 1, -10, 8];
+const sorted = arr2.sort((a, b) => b - a);
+console.log(sorted);
+
+let arr3 = ['HTML', 'JavaScript', 'CSS'];
+function copySorted(arr) {
+	return arr.slice().sort();
+}
+console.log(copySorted(arr3));
+console.log(arr3);
+
+let john = { name: 'John', age: 25 };
+let pete = { name: 'Pete', age: 30 };
+let mary = { name: 'Mary', age: 28 };
+
+let users = [john, pete, mary];
+let names = users.map((user) => user.name);
+console.log(names);
+
+let john1 = { name: 'John', surname: 'Smith', id: 1 };
+let pete1 = { name: 'Pete', surname: 'Hunt', id: 2 };
+let mary1 = { name: 'Mary', surname: 'Key', id: 3 };
+
+let users1 = [john1, pete1, mary1];
+let usersMapped = users1.map((user) => ({
+	fullName: `${user.name} ${user.surname}`,
+	id: user.id,
+}));
+console.log(usersMapped);
+
+function sortByAge(arr) {
+	return arr.sort((a, b) => a.age - b.age);
+}
+console.log(sortByAge(users));
+
+function getAverageAge(users) {
+	return Math.floor(
+		users.reduce((acc, curr) => acc + curr.age, 0) / users.length
+	);
+}
+console.log(getAverageAge(users));
+
