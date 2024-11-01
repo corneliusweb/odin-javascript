@@ -6,14 +6,13 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Calculator project | The Odin project</title>
    <link rel="stylesheet" href="styles.css">
-   <script type="module" src="app.js"></script>
 </head>
 
 <body>
    <form class="container">
       <div class="display">
          <div class="live-input">0</div>
-         <input type="text" class="number" value="23" aria-hidden="true" aria-label="Calculator display" readonly>
+         <input type="text" id="text" class="number" value="23" aria-hidden="true" aria-label="Calculator display" readonly>
       </div>
 
       <div class="buttons-wrapper">
@@ -49,6 +48,8 @@
    </form>
 
    <footer>&copy; corneliusweb 2024</footer>
+
+   <script src="app.js" defer></script>
 </body>
 
 </html>
