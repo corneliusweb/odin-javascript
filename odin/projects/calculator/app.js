@@ -60,3 +60,19 @@ funcAndNumericBtns.addEventListener('click', (event) => {
       console.log('dot')
    }
 });
+
+const operatorBtns = document.querySelector('.operator-btns');
+
+operatorBtns.addEventListener('click', (event) => {
+   if (event.target.classList.contains('divide')) {
+		console.log('/');
+	} else if (event.target.classList.contains('times')) {
+		console.log('X');
+	} else if (event.target.classList.contains('minus')) {
+		console.log('-');
+	} else if (event.target.classList.contains('plus')) {
+		console.log('+');
+	} else if (event.target.classList.contains('equals')) {
+		console.log('=');
+	}
+})
