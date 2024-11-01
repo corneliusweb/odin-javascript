@@ -1,0 +1,108 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   background-color: aliceblue;
+}
+
+form.container {
+   margin: auto;
+   display: flex;
+   flex-direction: column;
+   background-color: #222;
+   justify-content: space-between;
+   max-width: 400px;
+   border-radius: 4px;
+   box-shadow: 0 0 10px #000;
+   height: 500px;
+   min-height: 500px;
+}
+
+.display {
+   display: flex;
+   flex-direction: column;
+   height: 100px;
+   padding: 5px 10px;
+   gap: 8px;
+}
+
+.display div {
+   text-align: right;
+   color: #888;
+   font-size: 15px;
+}
+
+.display input {
+   flex-grow: 1;
+   border: none;
+   background: none;
+   text-align: right;
+   color: #fff;
+   font-size: 2em;
+   outline: none;
+   cursor: default;
+}
+
+.buttons-wrapper {
+   display: flex;
+   justify-content: space-between;
+   gap: 4px;
+   padding-bottom: 4px;
+}
+
+.numeric-and-func-wrapper {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+}
+
+div.numeric-btns {
+   gap: 4px;
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row-reverse;
+}
+
+div.numeric-btns button{
+   width: calc(33.2% - 4px);
+   background-color: #666;
+}
+.zero {
+   flex-grow: 1;
+   aspect-ratio: 1/0;
+   margin-left: 4px;
+}
+
+div.operator-btns {
+   width: calc(30%);
+   gap: 4px;
+   display: flex;
+   flex-wrap: wrap;
+   padding-right: 4px;
+}
+div.operator-btns button {
+   width: 100%;
+   background-color: #464545;
+}
+
+button {
+   aspect-ratio: 1/0.7;
+   border-radius: 5px;
+   font-size: 25px;
+   border: none;
+   background: none;
+   color: #fff;
+}
+
+.numeric-btns .negation,
+.numeric-btns .clear,
+.numeric-btns .remainder {
+   background-color: #464545;
+}
+.operator-btns button:last-child {
+   background-color: #2390d3;
+} 
