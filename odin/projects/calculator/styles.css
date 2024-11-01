@@ -7,19 +7,22 @@
 body {
    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
    background-color: aliceblue;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 form.container {
-   margin: auto;
    display: flex;
    flex-direction: column;
    background-color: #222;
    justify-content: space-between;
-   max-width: 400px;
+   max-width: 360px;
+   width: 310px;
    border-radius: 4px;
    box-shadow: 0 0 10px #000;
    height: 500px;
-   min-height: 500px;
+   margin-top: 90px;
 }
 
 .display {
@@ -106,3 +109,8 @@ button {
 .operator-btns button:last-child {
    background-color: #2390d3;
 } 
+
+footer {
+   position: fixed;
+   bottom: 0;
+}
