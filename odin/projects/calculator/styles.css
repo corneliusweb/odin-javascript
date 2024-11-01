@@ -63,14 +63,14 @@ form.container {
    width: 100%;
 }
 
-div.numeric-btns {
+div.func-and-numeric-btns {
    gap: 4px;
    display: flex;
    flex-wrap: wrap;
    flex-direction: row-reverse;
 }
 
-div.numeric-btns button{
+div.func-and-numeric-btns button{
    width: calc(33.2% - 4px);
    background-color: #666;
 }
@@ -101,9 +101,9 @@ button {
    color: #fff;
 }
 
-.numeric-btns .negation,
-.numeric-btns .clear,
-.numeric-btns .remainder {
+.func-and-numeric-btns .negation,
+.func-and-numeric-btns .clear,
+.func-and-numeric-btns .remainder {
    background-color: #464545;
 }
 .operator-btns button:last-child {
