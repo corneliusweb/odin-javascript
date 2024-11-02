@@ -181,13 +181,15 @@ operatorBtns.addEventListener('click', (event) => {
 	}
 
 	if (event.target.classList.contains('equals')) {
-		if (num2 === num1 && inputs === '') {
-			operate();
-			clear();
-		} else {
-			num2 = Number(inputs);
-			operate();
-			clear();
+		if (operator !== null) {
+			if (num2 === num1 && inputs === '') {
+				operate();
+				clear();
+			} else {
+				num2 = Number(inputs);
+				operate();
+				clear();
+			}
 		}
 	}
 });
