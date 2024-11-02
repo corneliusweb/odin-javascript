@@ -24,7 +24,7 @@ document
 
 const funcAndNumericBtns = document.querySelector('.func-and-numeric-btns');
 
-let inputs = '0';
+let inputs = '';
 
 funcAndNumericBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('remainder')) {
@@ -37,73 +37,74 @@ funcAndNumericBtns.addEventListener('click', (event) => {
 
 	// numeric buttons
 	if (event.target.classList.contains('one')) {
-		if (inputs === '0') {
+		if (inputs === '') {
 			inputs = '1';
 		} else {
 			inputs += '1';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('two')) {
-		if (inputs === '0') {
+		if (inputs === '') {
 			inputs = '2';
 		} else {
 			inputs += '2';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('three')) {
-		if (inputs === '0') {
+		if (inputs === '') {
 			inputs = '3';
 		} else {
 			inputs += '3';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('four')) {
-		if (inputs === '0') {
+		if (inputs === '') {
 			inputs = '4';
 		} else {
 			inputs += '4';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('five')) {
-		if (inputs === '0') {
+		if (inputs === '') {
 			inputs = '5';
 		} else {
 			inputs += '5';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('six')) {
-		if (inputs === '0') {
+		if (inputs === '') {
 			inputs = '6';
 		} else {
 			inputs += '6';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('seven')) {
-		if (inputs === '0') {
+		if (inputs === '') {
 			inputs = '7';
 		} else {
 			inputs += '7';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('eight')) {
-		if (inputs === '0') {
+		if (inputs === '') {
 			inputs = '8';
 		} else {
 			inputs += '8';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('nine')) {
-		if (inputs === '0') {
+		if (inputs === '') {
 			inputs = '9';
 		} else {
 			inputs += '9';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('zero')) {
-		if (inputs === '0') {
-			inputs = '';
+		if (inputs === '') {
+			inputs = '0';
+		} else {
+			inputs += '0';
 		}
-		inputs += '0';
 		console.log(inputs);
 	}
 
@@ -121,29 +122,61 @@ const operatorBtns = document.querySelector('.operator-btns');
 operatorBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('divide')) {
 		operator = 'divide';
-		num1 = Number(inputs);
-		inputs = '0';
-		console.log(num1);
+		if (inputs === '') {
+			num1 = 0;
+			console.log(num1);
+		} else {
+			num1 = Number(inputs);
+			inputs = '';
+			console.log(num1);
+		}
 	} else if (event.target.classList.contains('times')) {
 		operator = 'times';
-		num1 = Number(inputs);
-		inputs = '0';
-		console.log(num1);
+		if (inputs === '') {
+			num1 = 0;
+			console.log(num1);
+		} else {
+			num1 = Number(inputs);
+			inputs = '';
+			console.log(num1);
+		}
 	} else if (event.target.classList.contains('minus')) {
 		operator = 'minus';
-		num1 = Number(inputs);
-		inputs = '0';
-		console.log(num1);
+		if (inputs === '') {
+			num1 = 0;
+			console.log(num1);
+		} else {
+			num1 = Number(inputs);
+			inputs = '';
+			console.log(num1);
+		}
 	} else if (event.target.classList.contains('plus')) {
 		operator = 'plus';
-		num1 = Number(inputs);
-		inputs = '0';
-		console.log(num1);
-	} else if (event.target.classList.contains('equals')) {
-		num2 = Number(inputs);
-		operate();
-		inputs = '0';
-		operator = null;
+		if (inputs === '') {
+			num1 = 0;
+			console.log(num1);
+		} else {
+			num1 = Number(inputs);
+			inputs = '';
+			console.log(num1);
+		}
+	}
+
+	if (event.target.classList.contains('equals')) {
+		if (num2 === undefined && inputs === '') {
+			num2 = num1;
+			operate();
+			inputs = '';
+			num1 = 0;
+			num2 = undefined;
+			operator = null;
+		} else {
+			num2 = Number(inputs);
+			operate();
+			num1 = 0;
+			inputs = '';
+			operator = null;
+		}
 	}
 });
 
@@ -155,6 +188,6 @@ function operate() {
 	} else if (operator === 'minus') {
 		console.log(subtract(num1, num2));
 	} else if (operator === 'plus') {
-      console.log(add(num1, num2));
+		console.log(add(num1, num2));
 	}
 }
