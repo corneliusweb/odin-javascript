@@ -147,6 +147,7 @@ operatorBtns.addEventListener('click', (event) => {
 				num1 = num2;
 			} else {
 				num1 *= num2;
+				lastResult = num1;
 			}
 			inputs = '';
 		}
@@ -184,11 +185,11 @@ operatorBtns.addEventListener('click', (event) => {
 		if (operator !== null) {
 			if (num2 === num1 && inputs === '') {
 				operate();
-				clear();
+				restart();
 			} else {
 				num2 = Number(inputs);
 				operate();
-				clear();
+				restart();
 			}
 		}
 	}
@@ -196,18 +197,25 @@ operatorBtns.addEventListener('click', (event) => {
 
 function operate() {
 	if (operator === 'divide') {
-		console.log(divide(num1, num2));
+		inputs = divide(num1, num2);
+		console.log(inputs);
 	} else if (operator === 'times') {
-		console.log(multiply(num1, num2));
+		inputs = multiply(num1, num2);
+		console.log(inputs);
 	} else if (operator === 'minus') {
-		console.log(subtract(num1, num2));
+		inputs = subtract(num1, num2);
+		console.log(inputs);
 	} else if (operator === 'plus') {
-		console.log(add(num1, num2));
+		inputs = add(num1, num2);
+		console.log(inputs);
 	}
 }
 
-function clear() {
-	num1 = undefined;
-	operator = null;
-	inputs = '';
+function restart() {
+	if (num1 !== undefined) {
+		num1 = undefined;
+	}
+	if (operator !== null) {
+		operator = null;
+	}
 }
