@@ -102,11 +102,11 @@ funcAndNumericBtns.addEventListener('click', (event) => {
 	} else if (event.target.classList.contains('zero')) {
 		if (inputs === '') {
 			inputs = '0';
-		} else if(inputs === '0') {
+		} else if (inputs === '0') {
 			inputs += '';
-      } else {
-         inputs += '0'
-      }
+		} else {
+			inputs += '0';
+		}
 		console.log(inputs);
 	}
 
@@ -128,9 +128,13 @@ operatorBtns.addEventListener('click', (event) => {
 			num1 = 0;
 			console.log(num1);
 		} else {
-			num1 = Number(inputs);
+			num2 = Number(inputs);
+			if (num1 === undefined) {
+				num1 = num2;
+			} else {
+				num1 /= num2;
+			}
 			inputs = '';
-			console.log(num1);
 		}
 	} else if (event.target.classList.contains('times')) {
 		operator = 'times';
@@ -138,9 +142,13 @@ operatorBtns.addEventListener('click', (event) => {
 			num1 = 0;
 			console.log(num1);
 		} else {
-			num1 = Number(inputs);
+			num2 = Number(inputs);
+			if (num1 === undefined) {
+				num1 = num2;
+			} else {
+				num1 *= num2;
+			}
 			inputs = '';
-			console.log(num1);
 		}
 	} else if (event.target.classList.contains('minus')) {
 		operator = 'minus';
@@ -148,9 +156,13 @@ operatorBtns.addEventListener('click', (event) => {
 			num1 = 0;
 			console.log(num1);
 		} else {
-			num1 = Number(inputs);
+			num2 = Number(inputs);
+			if (num1 === undefined) {
+				num1 = num2;
+			} else {
+				num1 -= num2;
+			}
 			inputs = '';
-			console.log(num1);
 		}
 	} else if (event.target.classList.contains('plus')) {
 		operator = 'plus';
@@ -158,26 +170,24 @@ operatorBtns.addEventListener('click', (event) => {
 			num1 = 0;
 			console.log(num1);
 		} else {
-			num1 = Number(inputs);
+			num2 = Number(inputs);
+			if (num1 === undefined) {
+				num1 = num2;
+			} else {
+				num1 += num2;
+			}
 			inputs = '';
-			console.log(num1);
 		}
 	}
 
 	if (event.target.classList.contains('equals')) {
-		if (num2 === undefined && inputs === '') {
-			num2 = num1;
+		if (num2 === num1 && inputs === '') {
 			operate();
-			inputs = '';
-			num1 = 0;
-			num2 = undefined;
-			operator = null;
+			clear();
 		} else {
 			num2 = Number(inputs);
 			operate();
-			num1 = 0;
-			inputs = '';
-			operator = null;
+			clear();
 		}
 	}
 });
@@ -192,4 +202,10 @@ function operate() {
 	} else if (operator === 'plus') {
 		console.log(add(num1, num2));
 	}
+}
+
+function clear() {
+	num1 = undefined;
+	operator = null;
+	inputs = '';
 }
