@@ -120,14 +120,41 @@ const operatorBtns = document.querySelector('.operator-btns');
 
 operatorBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('divide')) {
-		console.log('/');
+		operator = 'divide';
+		num1 = Number(inputs);
+		inputs = '0';
+		console.log(num1);
 	} else if (event.target.classList.contains('times')) {
-		console.log('x');
+		operator = 'times';
+		num1 = Number(inputs);
+		inputs = '0';
+		console.log(num1);
 	} else if (event.target.classList.contains('minus')) {
-		console.log('-');
+		operator = 'minus';
+		num1 = Number(inputs);
+		inputs = '0';
+		console.log(num1);
 	} else if (event.target.classList.contains('plus')) {
-		console.log('+');
+		operator = 'plus';
+		num1 = Number(inputs);
+		inputs = '0';
+		console.log(num1);
 	} else if (event.target.classList.contains('equals')) {
-		console.log('=');
+		num2 = Number(inputs);
+		operate();
+		inputs = '0';
+		operator = null;
 	}
 });
+
+function operate() {
+	if (operator === 'divide') {
+		console.log(divide(num1, num2));
+	} else if (operator === 'times') {
+		console.log(multiply(num1, num2));
+	} else if (operator === 'minus') {
+		console.log(subtract(num1, num2));
+	} else if (operator === 'plus') {
+      console.log(add(num1, num2));
+	}
+}
