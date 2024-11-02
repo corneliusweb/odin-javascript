@@ -24,6 +24,8 @@ document
 
 const funcAndNumericBtns = document.querySelector('.func-and-numeric-btns');
 
+let inputs = '0';
+
 funcAndNumericBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('remainder')) {
 		console.log('%');
@@ -31,43 +33,96 @@ funcAndNumericBtns.addEventListener('click', (event) => {
 		console.log('-/+');
 	} else if (event.target.classList.contains('clear')) {
 		console.log('C');
-   }
-   
-   // numeric buttons
-   if (event.target.classList.contains('one')) {
-		console.log('1');
+	}
+
+	// numeric buttons
+	if (event.target.classList.contains('one')) {
+		if (inputs === '0') {
+			inputs = '1';
+		} else {
+			inputs += '1';
+		}
+		console.log(inputs);
 	} else if (event.target.classList.contains('two')) {
-		console.log('2');
+		if (inputs === '0') {
+			inputs = '2';
+		} else {
+			inputs += '2';
+		}
+		console.log(inputs);
 	} else if (event.target.classList.contains('three')) {
-		console.log('3');
+		if (inputs === '0') {
+			inputs = '3';
+		} else {
+			inputs += '3';
+		}
+		console.log(inputs);
 	} else if (event.target.classList.contains('four')) {
-		console.log('4');
+		if (inputs === '0') {
+			inputs = '4';
+		} else {
+			inputs += '4';
+		}
+		console.log(inputs);
 	} else if (event.target.classList.contains('five')) {
-		console.log('5');
+		if (inputs === '0') {
+			inputs = '5';
+		} else {
+			inputs += '5';
+		}
+		console.log(inputs);
 	} else if (event.target.classList.contains('six')) {
-		console.log('6');
+		if (inputs === '0') {
+			inputs = '6';
+		} else {
+			inputs += '6';
+		}
+		console.log(inputs);
 	} else if (event.target.classList.contains('seven')) {
-		console.log('7');
+		if (inputs === '0') {
+			inputs = '7';
+		} else {
+			inputs += '7';
+		}
+		console.log(inputs);
 	} else if (event.target.classList.contains('eight')) {
-		console.log('8');
+		if (inputs === '0') {
+			inputs = '8';
+		} else {
+			inputs += '8';
+		}
+		console.log(inputs);
 	} else if (event.target.classList.contains('nine')) {
-		console.log('9');
-   } else if (event.target.classList.contains('zero')) {
-      console.log('0')
-   }
-   
-   if (event.target.classList.contains('dot')) {
-      console.log('dot')
-   }
+		if (inputs === '0') {
+			inputs = '9';
+		} else {
+			inputs += '9';
+		}
+		console.log(inputs);
+	} else if (event.target.classList.contains('zero')) {
+		if (inputs === '0') {
+			inputs = '';
+		}
+		inputs += '0';
+		console.log(inputs);
+	}
+
+	if (event.target.classList.contains('dot')) {
+		if (!inputs.includes('.')) {
+			inputs += '.';
+		}
+		inputs += '';
+		console.log(inputs);
+	}
 });
 
 const operatorBtns = document.querySelector('.operator-btns');
 
 operatorBtns.addEventListener('click', (event) => {
-   if (event.target.classList.contains('divide')) {
+	if (event.target.classList.contains('divide')) {
 		console.log('/');
 	} else if (event.target.classList.contains('times')) {
-		console.log('X');
+		console.log('x');
 	} else if (event.target.classList.contains('minus')) {
 		console.log('-');
 	} else if (event.target.classList.contains('plus')) {
@@ -75,4 +130,4 @@ operatorBtns.addEventListener('click', (event) => {
 	} else if (event.target.classList.contains('equals')) {
 		console.log('=');
 	}
-})
+});
