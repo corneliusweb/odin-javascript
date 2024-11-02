@@ -37,63 +37,63 @@ funcAndNumericBtns.addEventListener('click', (event) => {
 
 	// numeric buttons
 	if (event.target.classList.contains('one')) {
-		if (inputs === '') {
+		if (inputs === '' || inputs === '0') {
 			inputs = '1';
 		} else {
 			inputs += '1';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('two')) {
-		if (inputs === '') {
+		if (inputs === '' || inputs === '0') {
 			inputs = '2';
 		} else {
 			inputs += '2';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('three')) {
-		if (inputs === '') {
+		if (inputs === '' || inputs === '0') {
 			inputs = '3';
 		} else {
 			inputs += '3';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('four')) {
-		if (inputs === '') {
+		if (inputs === '' || inputs === '0') {
 			inputs = '4';
 		} else {
 			inputs += '4';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('five')) {
-		if (inputs === '') {
+		if (inputs === '' || inputs === '0') {
 			inputs = '5';
 		} else {
 			inputs += '5';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('six')) {
-		if (inputs === '') {
+		if (inputs === '' || inputs === '0') {
 			inputs = '6';
 		} else {
 			inputs += '6';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('seven')) {
-		if (inputs === '') {
+		if (inputs === '' || inputs === '0') {
 			inputs = '7';
 		} else {
 			inputs += '7';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('eight')) {
-		if (inputs === '') {
+		if (inputs === '' || inputs === '0') {
 			inputs = '8';
 		} else {
 			inputs += '8';
 		}
 		console.log(inputs);
 	} else if (event.target.classList.contains('nine')) {
-		if (inputs === '') {
+		if (inputs === '' || inputs === '0') {
 			inputs = '9';
 		} else {
 			inputs += '9';
@@ -102,9 +102,11 @@ funcAndNumericBtns.addEventListener('click', (event) => {
 	} else if (event.target.classList.contains('zero')) {
 		if (inputs === '') {
 			inputs = '0';
-		} else {
-			inputs += '0';
-		}
+		} else if(inputs === '0') {
+			inputs += '';
+      } else {
+         inputs += '0'
+      }
 		console.log(inputs);
 	}
 
