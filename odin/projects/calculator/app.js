@@ -1,6 +1,7 @@
 let num1;
-let operator = null;
 let num2;
+let inputs = '';
+let operator = null;
 
 function add(num1, num2) {
 	return num1 + num2;
@@ -24,16 +25,32 @@ document
 
 const funcAndNumericBtns = document.querySelector('.func-and-numeric-btns');
 
-let inputs = '';
-let lastResult = '';
-
 funcAndNumericBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('remainder')) {
 		console.log('%');
 	} else if (event.target.classList.contains('negation')) {
+		if (num1 && inputs === '') {
+			const negate = num1 * -1;
+			if (Math.sign(num1) !== -1 || Math.sign(num1) !== 0) {
+				num1 = negate;
+			} else {
+				const absoluteNum = Math.abs(num1);
+				num1 = absoluteNum;
+			}
+		} else {
+			if (!inputs.includes('-')) {
+				inputs = '-' + inputs;
+			} else {
+				inputs = inputs.slice(1);
+			}
+		}
 		console.log('-/+');
 	} else if (event.target.classList.contains('clear')) {
-		console.log('C');
+		if (num1 !== undefined) {
+			num1 = undefined;
+		}
+		restart();
+		console.log('Cleared');
 	}
 
 	// numeric buttons
