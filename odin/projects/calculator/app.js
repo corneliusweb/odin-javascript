@@ -124,51 +124,74 @@ const operatorBtns = document.querySelector('.operator-btns');
 
 operatorBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('divide')) {
-		operator = 'divide';
-		if (inputs === '' && num1 === undefined) {
-			num1 = 0;
-			console.log(num1);
-		} else {
-			if (num1 === undefined) {
-				num1 = Number(inputs);
+		const currentOperator = 'divide';
+		if (operator === null) {
+			operator = currentOperator;
+
+			if (inputs === '' && num1 === undefined) {
+				num1 = 0;
+				console.log(num1);
 			} else {
-				num2 = Number(inputs);
-				num1 /= num2;
+				if (num1 === undefined) {
+					num1 = Number(inputs);
+				} else {
+					num2 = Number(inputs);
+					num1 /= num2;
+				}
+				inputs = '';
 			}
-			inputs = '';
+		} else {
+			earlyOperate();
+			operator = currentOperator;
 		}
 	} else if (event.target.classList.contains('times')) {
-		operator = 'times';
-		if (inputs === '' && num1 === undefined) {
-			num1 = 0;
-			console.log(num1);
-		} else {
-			if (num1 === undefined) {
-				num1 = Number(inputs);
+		const currentOperator = 'times';
+		if (operator === null) {
+			operator = currentOperator;
+
+			if (inputs === '' && num1 === undefined) {
+				num1 = 0;
+				console.log(num1);
 			} else {
-				num2 = Number(inputs);
-				num1 *= num2;
+				if (num1 === undefined) {
+					num1 = Number(inputs);
+				} else {
+					num2 = Number(inputs);
+					num1 *= num2;
+				}
+				inputs = '';
 			}
-			inputs = '';
+		} else {
+			earlyOperate();
+			operator = currentOperator;
 		}
 	} else if (event.target.classList.contains('minus')) {
-		operator = 'minus';
-		if (inputs === '' && num1 === undefined) {
-			num1 = 0;
-			console.log(num1);
-		} else {
-			if (num1 === undefined) {
-				num1 = Number(inputs);
+		const currentOperator = 'minus';
+		if (operator === null) {
+			operator = currentOperator;
+
+			if (inputs === '' && num1 === undefined) {
+				num1 = 0;
+				console.log(num1);
 			} else {
-				num2 = Number(inputs);
-				num1 -= num2;
+				if (num1 === undefined) {
+					num1 = Number(inputs);
+				} else {
+					num2 = Number(inputs);
+					num1 -= num2;
+				}
+				inputs = '';
 			}
-			inputs = '';
+		} else {
+			earlyOperate();
+			operator = currentOperator;
 		}
 	} else if (event.target.classList.contains('plus')) {
-      if (operator === null) {
-         operator = 'plus';
-         if (inputs === '' && num1 === undefined) {
+		const currentOperator = 'plus';
+		if (operator === null) {
+			operator = currentOperator;
+
+			if (inputs === '' && num1 === undefined) {
 				num1 = 0;
 				console.log(num1);
 			} else {
@@ -180,10 +203,10 @@ operatorBtns.addEventListener('click', (event) => {
 				}
 				inputs = '';
 			}
-      } else {
-         earlyOperate()
-         operator = 'plus';
-      }
+		} else {
+			earlyOperate();
+			operator = currentOperator;
+		}
 	}
 
 	if (event.target.classList.contains('equals')) {
@@ -230,14 +253,14 @@ function restart() {
 }
 
 function earlyOperate() {
-   if (num1 && inputs !== '') {
-      num2 = Number(inputs);
+	if (num1 && inputs !== '') {
+		num2 = Number(inputs);
 		operate();
-   }
-   if (inputs !== '') {
+	}
+	if (inputs !== '') {
 		inputs = '';
-   }
-   if (num2 !== undefined) {
+	}
+	if (num2 !== undefined) {
 		num2 = undefined;
 	}
 }
