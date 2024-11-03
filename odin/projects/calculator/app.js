@@ -28,16 +28,19 @@ const funcAndNumericBtns = document.querySelector('.func-and-numeric-btns');
 funcAndNumericBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('remainder')) {
 		if (num1 !== undefined || inputs !== '') {
-			if (num1 && inputs !== '') {
+			if (num1 !== undefined && inputs !== '') {
 				const num = Number(inputs);
 				num1 = (num1 / num) * 100;
+				inputs = '';
 				console.log(num1);
 			} else if (num1 === undefined && inputs !== '') {
 				const num = Number(inputs);
-				num1 = num / 100;
+            num1 = num / 100;
+            inputs = '';
 				console.log(num1);
 			} else if (num1 && inputs === '') {
-				num1 = num1 / 100;
+            num1 = num1 / 100;
+            inputs = '';
 				console.log(num1);
 			}
 		}
@@ -162,9 +165,9 @@ operatorBtns.addEventListener('click', (event) => {
 				num1 = 0;
 				console.log(num1);
 			} else {
-				if (num1 === undefined) {
+				if (num1 === undefined && inputs !== '') {
 					num1 = Number(inputs);
-				} else {
+				} else if (num1 !== undefined && inputs !== '') {
 					num2 = Number(inputs);
 					num1 /= num2;
 				}
@@ -206,9 +209,9 @@ operatorBtns.addEventListener('click', (event) => {
 				inputs = '-' + inputs;
 				console.log(inputs);
 			} else {
-				if (num1 === undefined) {
+				if (num1 === undefined && inputs !== '') {
 					num1 = Number(inputs);
-				} else {
+				} else if (num1 !== undefined && inputs !== '') {
 					num2 = Number(inputs);
 					num1 -= num2;
 				}
@@ -227,9 +230,9 @@ operatorBtns.addEventListener('click', (event) => {
 				num1 = 0;
 				console.log(num1);
 			} else {
-				if (num1 === undefined) {
+				if (num1 === undefined && inputs !== '') {
 					num1 = Number(inputs);
-				} else {
+				} else if (num1 !== undefined && inputs !== '') {
 					num2 = Number(inputs);
 					num1 += num2;
 				}
