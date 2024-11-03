@@ -183,9 +183,9 @@ operatorBtns.addEventListener('click', (event) => {
 				num1 = 1;
 				console.log(num1);
 			} else {
-				if (num1 === undefined) {
+				if (num1 === undefined && inputs !== '') {
 					num1 = Number(inputs);
-				} else {
+				} else if (num1 !== undefined && inputs !== '') {
 					num2 = Number(inputs);
 					num1 *= num2;
 				}
