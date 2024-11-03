@@ -198,25 +198,28 @@ operatorBtns.addEventListener('click', (event) => {
 
 function operate() {
 	if (operator === 'divide') {
-		inputs = divide(num1, num2);
-		console.log(inputs);
+		num1 = divide(num1, num2);
+		console.log(num1);
 	} else if (operator === 'times') {
-		inputs = multiply(num1, num2);
-		console.log(inputs);
+		num1 = multiply(num1, num2);
+		console.log(num1);
 	} else if (operator === 'minus') {
-		inputs = subtract(num1, num2);
-		console.log(inputs);
+		num1 = subtract(num1, num2);
+		console.log(num1);
 	} else if (operator === 'plus') {
-		inputs = add(num1, num2);
-		console.log(inputs);
+		num1 = add(num1, num2);
+		console.log(num1);
 	}
 }
 
 function restart() {
-	if (num1 !== undefined) {
-		num1 = undefined;
+	if (num2 !== undefined) {
+		num2 = undefined;
 	}
 	if (operator !== null) {
 		operator = null;
+	}
+	if (inputs !== '') {
+		inputs = '';
 	}
 }
