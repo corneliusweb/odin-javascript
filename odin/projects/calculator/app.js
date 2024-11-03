@@ -27,6 +27,20 @@ const funcAndNumericBtns = document.querySelector('.func-and-numeric-btns');
 
 funcAndNumericBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('remainder')) {
+		if (num1 !== undefined || inputs !== '') {
+			if (num1 && inputs !== '') {
+				const num = Number(inputs);
+				num1 = (num1 / num) * 100;
+				console.log(num1);
+			} else if (num1 === undefined && inputs !== '') {
+				const num = Number(inputs);
+				num1 = num / 100;
+				console.log(num1);
+			} else if (num1 && inputs === '') {
+				num1 = num1 / 100;
+				console.log(num1);
+			}
+		}
 		console.log('%');
 	} else if (event.target.classList.contains('negation')) {
 		if (num1 && inputs === '') {
@@ -34,8 +48,7 @@ funcAndNumericBtns.addEventListener('click', (event) => {
 			if (Math.sign(num1) !== -1 || Math.sign(num1) !== 0) {
 				num1 = negate;
 			} else {
-				const absoluteNum = Math.abs(num1);
-				num1 = absoluteNum;
+				num1 = Math.abs(num1);
 			}
 		} else {
 			if (!inputs.includes('-')) {
@@ -167,7 +180,7 @@ operatorBtns.addEventListener('click', (event) => {
 			operator = currentOperator;
 
 			if (inputs === '' && num1 === undefined) {
-				num1 = 0;
+				num1 = 1;
 				console.log(num1);
 			} else {
 				if (num1 === undefined) {
@@ -185,11 +198,13 @@ operatorBtns.addEventListener('click', (event) => {
 	} else if (event.target.classList.contains('minus')) {
 		const currentOperator = 'minus';
 		if (operator === null) {
-			operator = currentOperator;
+			if (inputs !== '' || num1 !== undefined) {
+				operator = currentOperator;
+			}
 
 			if (inputs === '' && num1 === undefined) {
-				num1 = 0;
-				console.log(num1);
+				inputs = '-' + inputs;
+				console.log(inputs);
 			} else {
 				if (num1 === undefined) {
 					num1 = Number(inputs);
