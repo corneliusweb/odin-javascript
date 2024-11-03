@@ -30,17 +30,18 @@ funcAndNumericBtns.addEventListener('click', (event) => {
 		if (num1 !== undefined || inputs !== '') {
 			if (num1 !== undefined && inputs !== '') {
 				const num = Number(inputs);
-				num1 = (num1 / num) * 100;
-				inputs = '';
+				const percent = (num / 100) * num1;
+				num2 = percent;
+				operate();
 				console.log(num1);
 			} else if (num1 === undefined && inputs !== '') {
 				const num = Number(inputs);
-            num1 = num / 100;
-            inputs = '';
+				num1 = num / 100;
+				inputs = '';
 				console.log(num1);
 			} else if (num1 && inputs === '') {
-            num1 = num1 / 100;
-            inputs = '';
+				num1 = num1 / 100;
+				inputs = '';
 				console.log(num1);
 			}
 		}
