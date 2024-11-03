@@ -5,11 +5,13 @@
 }
 
 body {
-   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-family: Impact, 'Arial Narrow Bold', Arial, sans-serif;
    background-color: aliceblue;
    display: flex;
    flex-direction: column;
    align-items: center;
+   padding: 5px;
+   height: 100dvh;
 }
 
 form.container {
@@ -18,25 +20,28 @@ form.container {
    background-color: #222;
    justify-content: space-between;
    max-width: 360px;
-   width: 310px;
+   width: 270px;
+   min-width: 280px;
    border-radius: 4px;
-   box-shadow: 0 0 10px #000;
-   height: 500px;
+   box-shadow: 0 0 8px #000;
+   height: fit-content;
    margin-top: 90px;
 }
 
 .display {
    display: flex;
    flex-direction: column;
-   height: 100px;
-   padding: 5px 10px;
+   height: 200px;
+   padding: 25px 10px;
    gap: 8px;
 }
 
 .display div {
    text-align: right;
    color: #888;
-   font-size: 15px;
+   font-weight: 100;
+   font-size: 20px;
+   margin-top: 25px;
 }
 
 .display input {
@@ -45,7 +50,7 @@ form.container {
    background: none;
    text-align: right;
    color: #fff;
-   font-size: 2em;
+   font-size: 2.5em;
    outline: none;
    cursor: default;
 }
@@ -70,10 +75,15 @@ div.func-and-numeric-btns {
    flex-direction: row-reverse;
 }
 
-div.func-and-numeric-btns button{
+div.func-and-numeric-btns button {
    width: calc(33.2% - 4px);
    background-color: #666;
 }
+
+div.func-and-numeric-btns button:hover {
+   background-color: #464545
+}
+
 .zero {
    flex-grow: 1;
    aspect-ratio: 1/0;
@@ -87,9 +97,14 @@ div.operator-btns {
    flex-wrap: wrap;
    padding-right: 4px;
 }
+
 div.operator-btns button {
    width: 100%;
    background-color: #464545;
+}
+
+div.operator-btns button:not(.operator-btns button:last-child):hover {
+   background-color: #666;
 }
 
 button {
@@ -101,16 +116,40 @@ button {
    color: #fff;
 }
 
-.func-and-numeric-btns .negation,
-.func-and-numeric-btns .clear,
-.func-and-numeric-btns .remainder {
+.buttons-wrapper .negation,
+.buttons-wrapper .clear,
+.buttons-wrapper .remainder {
    background-color: #464545;
 }
+.buttons-wrapper .negation:hover,
+.buttons-wrapper .clear:hover,
+.buttons-wrapper .remainder:hover {
+   background-color: #666;
+}
+
 .operator-btns button:last-child {
    background-color: #2390d3;
-} 
+}
+.operator-btns button:last-child:hover {
+   background-color: #0f74b3;
+}
 
 footer {
    position: fixed;
    bottom: 0;
+   color:  #fff;
+   background-color: #111;
+   width: 100%;
+   justify-content: center;
+   align-items: center;
+   height: 40px;
+   font-size: 20px;
+   letter-spacing: .5px;
+   display: flex;
+}
+
+@media screen and (min-width: 400px) {
+   form.container {
+      width: 300px;
+   }
 }
