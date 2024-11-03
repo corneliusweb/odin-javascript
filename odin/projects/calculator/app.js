@@ -133,7 +133,7 @@ operatorBtns.addEventListener('click', (event) => {
 				num1 = Number(inputs);
 			} else {
 				num2 = Number(inputs);
-				num1 += num2;
+				num1 /= num2;
 			}
 			inputs = '';
 		}
@@ -147,7 +147,7 @@ operatorBtns.addEventListener('click', (event) => {
 				num1 = Number(inputs);
 			} else {
 				num2 = Number(inputs);
-				num1 += num2;
+				num1 *= num2;
 			}
 			inputs = '';
 		}
@@ -161,7 +161,7 @@ operatorBtns.addEventListener('click', (event) => {
 				num1 = Number(inputs);
 			} else {
 				num2 = Number(inputs);
-				num1 += num2;
+				num1 -= num2;
 			}
 			inputs = '';
 		}
