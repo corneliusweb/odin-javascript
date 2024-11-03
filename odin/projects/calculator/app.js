@@ -25,6 +25,7 @@ document
 const funcAndNumericBtns = document.querySelector('.func-and-numeric-btns');
 
 let inputs = '';
+let lastResult = '';
 
 funcAndNumericBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('remainder')) {
@@ -124,57 +125,56 @@ const operatorBtns = document.querySelector('.operator-btns');
 operatorBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('divide')) {
 		operator = 'divide';
-		if (inputs === '') {
+		if (inputs === '' && num1 === undefined) {
 			num1 = 0;
 			console.log(num1);
 		} else {
-			num2 = Number(inputs);
 			if (num1 === undefined) {
-				num1 = num2;
+				num1 = Number(inputs);
 			} else {
-				num1 /= num2;
+				num2 = Number(inputs);
+				num1 += num2;
 			}
 			inputs = '';
 		}
 	} else if (event.target.classList.contains('times')) {
 		operator = 'times';
-		if (inputs === '') {
+		if (inputs === '' && num1 === undefined) {
 			num1 = 0;
 			console.log(num1);
 		} else {
-			num2 = Number(inputs);
 			if (num1 === undefined) {
-				num1 = num2;
+				num1 = Number(inputs);
 			} else {
-				num1 *= num2;
-				lastResult = num1;
+				num2 = Number(inputs);
+				num1 += num2;
 			}
 			inputs = '';
 		}
 	} else if (event.target.classList.contains('minus')) {
 		operator = 'minus';
-		if (inputs === '') {
+		if (inputs === '' && num1 === undefined) {
 			num1 = 0;
 			console.log(num1);
 		} else {
-			num2 = Number(inputs);
 			if (num1 === undefined) {
-				num1 = num2;
+				num1 = Number(inputs);
 			} else {
-				num1 -= num2;
+				num2 = Number(inputs);
+				num1 += num2;
 			}
 			inputs = '';
 		}
 	} else if (event.target.classList.contains('plus')) {
 		operator = 'plus';
-		if (inputs === '') {
+		if (inputs === '' && num1 === undefined) {
 			num1 = 0;
 			console.log(num1);
 		} else {
-			num2 = Number(inputs);
 			if (num1 === undefined) {
-				num1 = num2;
+				num1 = Number(inputs);
 			} else {
+				num2 = Number(inputs);
 				num1 += num2;
 			}
 			inputs = '';
@@ -183,7 +183,8 @@ operatorBtns.addEventListener('click', (event) => {
 
 	if (event.target.classList.contains('equals')) {
 		if (operator !== null) {
-			if (num2 === num1 && inputs === '') {
+			if (num2 === undefined && inputs === '') {
+				num2 = num1;
 				operate();
 				restart();
 			} else {
