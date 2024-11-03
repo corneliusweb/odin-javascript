@@ -166,19 +166,24 @@ operatorBtns.addEventListener('click', (event) => {
 			inputs = '';
 		}
 	} else if (event.target.classList.contains('plus')) {
-		operator = 'plus';
-		if (inputs === '' && num1 === undefined) {
-			num1 = 0;
-			console.log(num1);
-		} else {
-			if (num1 === undefined) {
-				num1 = Number(inputs);
+      if (operator === null) {
+         operator = 'plus';
+         if (inputs === '' && num1 === undefined) {
+				num1 = 0;
+				console.log(num1);
 			} else {
-				num2 = Number(inputs);
-				num1 += num2;
+				if (num1 === undefined) {
+					num1 = Number(inputs);
+				} else {
+					num2 = Number(inputs);
+					num1 += num2;
+				}
+				inputs = '';
 			}
-			inputs = '';
-		}
+      } else {
+         earlyOperate()
+         operator = 'plus';
+      }
 	}
 
 	if (event.target.classList.contains('equals')) {
@@ -221,5 +226,18 @@ function restart() {
 	}
 	if (inputs !== '') {
 		inputs = '';
+	}
+}
+
+function earlyOperate() {
+   if (num1 && inputs !== '') {
+      num2 = Number(inputs);
+		operate();
+   }
+   if (inputs !== '') {
+		inputs = '';
+   }
+   if (num2 !== undefined) {
+		num2 = undefined;
 	}
 }
