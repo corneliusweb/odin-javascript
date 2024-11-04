@@ -24,7 +24,7 @@ form.container {
    min-width: 280px;
    border-radius: 4px;
    box-shadow: 0 0 8px #000;
-   height: fit-content;
+   height: 440px;
    margin-top: 90px;
 }
 
@@ -36,21 +36,13 @@ form.container {
    gap: 8px;
 }
 
-.display div {
-   text-align: right;
-   color: #888;
-   font-weight: 100;
-   font-size: 20px;
-   margin-top: 25px;
-}
-
 .display input {
    flex-grow: 1;
    border: none;
    background: none;
    text-align: right;
    color: #fff;
-   font-size: 2.5em;
+   font-size: 1.8em;
    outline: none;
    cursor: default;
 }
@@ -137,13 +129,13 @@ button {
 footer {
    position: fixed;
    bottom: 0;
-   color:  #fff;
+   color:  #bcb6b6;
    background-color: #111;
    width: 100%;
    justify-content: center;
    align-items: center;
    height: 40px;
-   font-size: 20px;
+   font-size: 18px;
    letter-spacing: .5px;
    display: flex;
 }
