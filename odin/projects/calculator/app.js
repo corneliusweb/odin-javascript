@@ -24,8 +24,19 @@ document
 	.addEventListener('click', (event) => event.preventDefault());
 
 const funcAndNumericBtns = document.querySelector('.func-and-numeric-btns');
+const inputEl = document.querySelector('.display input');
+document.addEventListener('DOMContentLoaded', () =>
+	inputs === '' ? (inputEl.value = '0') : (inputEl.value = '')
+);
+
+function removeFirstZero() {
+	if (inputEl.value.length > 0 && inputEl.value[0] === '0') {
+		inputEl.value = inputEl.value.slice(1);
+   } 
+}
 
 funcAndNumericBtns.addEventListener('click', (event) => {
+	removeFirstZero();
 	if (event.target.classList.contains('remainder')) {
 		if (num1 !== undefined || inputs !== '') {
 			if (num1 !== undefined && inputs !== '') {
@@ -33,41 +44,43 @@ funcAndNumericBtns.addEventListener('click', (event) => {
 				const percent = (num / 100) * num1;
 				num2 = percent;
 				operate();
-				console.log(num1);
+				inputEl.value = num1;
 			} else if (num1 === undefined && inputs !== '') {
 				const num = Number(inputs);
 				num1 = num / 100;
 				inputs = '';
-				console.log(num1);
+				inputEl.value = num1;
 			} else if (num1 && inputs === '') {
 				num1 = num1 / 100;
 				inputs = '';
-				console.log(num1);
+				inputEl.value = num1;
 			}
 		}
-		console.log('%');
 	} else if (event.target.classList.contains('negation')) {
 		if (num1 && inputs === '') {
 			const negate = num1 * -1;
 			if (Math.sign(num1) !== -1 || Math.sign(num1) !== 0) {
-				num1 = negate;
+            num1 = negate;
+            inputEl.value = num1;
 			} else {
 				num1 = Math.abs(num1);
+				inputEl.value = num1;
 			}
 		} else {
 			if (!inputs.includes('-')) {
-				inputs = '-' + inputs;
+            inputs = '-' + inputs;
+            inputEl.value = inputs;
 			} else {
-				inputs = inputs.slice(1);
+            inputs = inputs.slice(1);
+            inputEl.value = inputs;
 			}
 		}
-		console.log('-/+');
 	} else if (event.target.classList.contains('clear')) {
 		if (num1 !== undefined) {
 			num1 = undefined;
 		}
 		restart();
-		console.log('Cleared');
+		inputEl.value = '0';
 	}
 
 	// numeric buttons
@@ -77,84 +90,94 @@ funcAndNumericBtns.addEventListener('click', (event) => {
 		} else {
 			inputs += '1';
 		}
-		console.log(inputs);
+		inputEl.value += '1';
 	} else if (event.target.classList.contains('two')) {
 		if (inputs === '' || inputs === '0') {
 			inputs = '2';
 		} else {
 			inputs += '2';
 		}
-		console.log(inputs);
+		inputEl.value += '2';
 	} else if (event.target.classList.contains('three')) {
 		if (inputs === '' || inputs === '0') {
 			inputs = '3';
 		} else {
 			inputs += '3';
 		}
-		console.log(inputs);
+		inputEl.value += '3';
 	} else if (event.target.classList.contains('four')) {
 		if (inputs === '' || inputs === '0') {
 			inputs = '4';
 		} else {
 			inputs += '4';
 		}
-		console.log(inputs);
+		inputEl.value += '4';
 	} else if (event.target.classList.contains('five')) {
 		if (inputs === '' || inputs === '0') {
 			inputs = '5';
 		} else {
 			inputs += '5';
 		}
-		console.log(inputs);
+		inputEl.value += '5';
 	} else if (event.target.classList.contains('six')) {
 		if (inputs === '' || inputs === '0') {
 			inputs = '6';
 		} else {
 			inputs += '6';
 		}
-		console.log(inputs);
+		inputEl.value += '6';
 	} else if (event.target.classList.contains('seven')) {
 		if (inputs === '' || inputs === '0') {
 			inputs = '7';
 		} else {
 			inputs += '7';
 		}
-		console.log(inputs);
+		inputEl.value += '7';
 	} else if (event.target.classList.contains('eight')) {
 		if (inputs === '' || inputs === '0') {
 			inputs = '8';
 		} else {
 			inputs += '8';
 		}
-		console.log(inputs);
+		inputEl.value += '8';
 	} else if (event.target.classList.contains('nine')) {
 		if (inputs === '' || inputs === '0') {
 			inputs = '9';
 		} else {
 			inputs += '9';
 		}
-		console.log(inputs);
+		inputEl.value += '9';
 	} else if (event.target.classList.contains('zero')) {
 		if (inputs === '') {
 			inputs = '0';
-		} else if (inputs === '0') {
+			inputEl.value += '0';
+		} else if (inputs === '0' && inputEl.value === '0') {
 			inputs += '';
 		} else {
 			inputs += '0';
+			inputEl.value += '0';
 		}
-		console.log(inputs);
 	}
 
 	if (event.target.classList.contains('dot')) {
 		if (!inputs.includes('.')) {
-			inputs += '.';
+         inputs += '.';
+         inputEl.value += '.'
 		}
 		inputs += '';
-		console.log(inputs);
 	}
 });
 
 const operatorBtns = document.querySelector('.operator-btns');
+
+function removeDuplicateOperator(op) {
+	const indexOfMainOp = inputEl.value[inputEl.value.length - 2];
+	const indexOfDuplicateOp = inputEl.value[inputEl.value.length - 1];
+
+	if (indexOfDuplicateOp === op && indexOfMainOp === op) {
+		inputEl.value = inputEl.value.replace(indexOfDuplicateOp, '');
+	}
+}
 
 operatorBtns.addEventListener('click', (event) => {
 	if (event.target.classList.contains('divide')) {
@@ -164,7 +187,7 @@ operatorBtns.addEventListener('click', (event) => {
 
 			if (inputs === '' && num1 === undefined) {
 				num1 = 0;
-				console.log(num1);
+				inputEl.value = num1;
 			} else {
 				if (num1 === undefined && inputs !== '') {
 					num1 = Number(inputs);
@@ -178,14 +201,16 @@ operatorBtns.addEventListener('click', (event) => {
 			earlyOperate();
 			operator = currentOperator;
 		}
+		inputEl.value += '/';
+		removeDuplicateOperator('/');
 	} else if (event.target.classList.contains('times')) {
 		const currentOperator = 'times';
 		if (operator === null) {
 			operator = currentOperator;
 
 			if (inputs === '' && num1 === undefined) {
-				num1 = 1;
-				console.log(num1);
+				num1 = 0;
+				inputEl.value = num1;
 			} else {
 				if (num1 === undefined && inputs !== '') {
 					num1 = Number(inputs);
@@ -199,6 +224,8 @@ operatorBtns.addEventListener('click', (event) => {
 			earlyOperate();
 			operator = currentOperator;
 		}
+		inputEl.value += '*';
+		removeDuplicateOperator('*');
 	} else if (event.target.classList.contains('minus')) {
 		const currentOperator = 'minus';
 		if (operator === null) {
@@ -222,6 +249,8 @@ operatorBtns.addEventListener('click', (event) => {
 			earlyOperate();
 			operator = currentOperator;
 		}
+		inputEl.value += '-';
+		removeDuplicateOperator('-');
 	} else if (event.target.classList.contains('plus')) {
 		const currentOperator = 'plus';
 		if (operator === null) {
@@ -229,7 +258,7 @@ operatorBtns.addEventListener('click', (event) => {
 
 			if (inputs === '' && num1 === undefined) {
 				num1 = 0;
-				console.log(num1);
+				inputEl.value = num1;
 			} else {
 				if (num1 === undefined && inputs !== '') {
 					num1 = Number(inputs);
@@ -243,6 +272,8 @@ operatorBtns.addEventListener('click', (event) => {
 			earlyOperate();
 			operator = currentOperator;
 		}
+		inputEl.value += '+';
+		removeDuplicateOperator('+');
 	}
 
 	if (event.target.classList.contains('equals')) {
@@ -263,16 +294,16 @@ operatorBtns.addEventListener('click', (event) => {
 function operate() {
 	if (operator === 'divide') {
 		num1 = divide(num1, num2);
-		console.log(num1);
+		inputEl.value = num1;
 	} else if (operator === 'times') {
 		num1 = multiply(num1, num2);
-		console.log(num1);
+		inputEl.value = num1;
 	} else if (operator === 'minus') {
 		num1 = subtract(num1, num2);
-		console.log(num1);
+		inputEl.value = num1;
 	} else if (operator === 'plus') {
 		num1 = add(num1, num2);
-		console.log(num1);
+		inputEl.value = num1;
 	}
 }
 
