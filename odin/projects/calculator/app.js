@@ -30,9 +30,14 @@ document.addEventListener('DOMContentLoaded', () =>
 );
 
 function removeFirstZero() {
-	if (inputEl.value.length > 0 && inputEl.value[0] === '0') {
+	if (
+		inputEl.value.length > 0 &&
+		inputEl.value[0] === '0' &&
+		operator === null &&
+		num1 === undefined
+	) {
 		inputEl.value = inputEl.value.slice(1);
-   } 
+	}
 }
 
 funcAndNumericBtns.addEventListener('click', (event) => {
@@ -60,19 +65,19 @@ funcAndNumericBtns.addEventListener('click', (event) => {
 		if (num1 && inputs === '') {
 			const negate = num1 * -1;
 			if (Math.sign(num1) !== -1 || Math.sign(num1) !== 0) {
-            num1 = negate;
-            inputEl.value = num1;
+				num1 = negate;
+				inputEl.value = num1;
 			} else {
 				num1 = Math.abs(num1);
 				inputEl.value = num1;
 			}
 		} else {
 			if (!inputs.includes('-')) {
-            inputs = '-' + inputs;
-            inputEl.value = inputs;
+				inputs = '-' + inputs;
+				inputEl.value = inputs;
 			} else {
-            inputs = inputs.slice(1);
-            inputEl.value = inputs;
+				inputs = inputs.slice(1);
+				inputEl.value = inputs;
 			}
 		}
 	} else if (event.target.classList.contains('clear')) {
@@ -161,8 +166,8 @@ funcAndNumericBtns.addEventListener('click', (event) => {
 
 	if (event.target.classList.contains('dot')) {
 		if (!inputs.includes('.')) {
-         inputs += '.';
-         inputEl.value += '.'
+			inputs += '.';
+			inputEl.value += '.';
 		}
 		inputs += '';
 	}
@@ -171,8 +176,8 @@ funcAndNumericBtns.addEventListener('click', (event) => {
 const operatorBtns = document.querySelector('.operator-btns');
 
 function removeDuplicateOperator(op) {
-	const indexOfMainOp = inputEl.value[inputEl.value.length - 2];
-	const indexOfDuplicateOp = inputEl.value[inputEl.value.length - 1];
+	const indexOfMainOp = inputEl.value.at(-2);
+	const indexOfDuplicateOp = inputEl.value.at(-1);
 
 	if (indexOfDuplicateOp === op && indexOfMainOp === op) {
 		inputEl.value = inputEl.value.replace(indexOfDuplicateOp, '');
@@ -180,6 +185,7 @@ function removeDuplicateOperator(op) {
 }
 
 operatorBtns.addEventListener('click', (event) => {
+	removeFirstZero();
 	if (event.target.classList.contains('divide')) {
 		const currentOperator = 'divide';
 		if (operator === null) {
@@ -235,7 +241,6 @@ operatorBtns.addEventListener('click', (event) => {
 
 			if (inputs === '' && num1 === undefined) {
 				inputs = '-' + inputs;
-				console.log(inputs);
 			} else {
 				if (num1 === undefined && inputs !== '') {
 					num1 = Number(inputs);
