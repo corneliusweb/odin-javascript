@@ -10,7 +10,6 @@ function getComputerChoice() {
 		return 'Scissors';
 	}
 }
-// console.log(getComputerChoice());
 
 function playGame() {
 	let humanScore = 0;
@@ -21,7 +20,6 @@ function playGame() {
 	const finalResult = document.querySelector('.final-result');
 
 	function playRound(humanChoice, computerChoice) {
-		// check if computer and the user chose the same word
 		if (computerChoice === humanChoice) {
 			roundResult.textContent = `That's a tie. Go again!`;
 		}
@@ -65,16 +63,16 @@ function playGame() {
 
 	const btns = document.querySelector('.game-btns');
 	btns.addEventListener('click', (event) => {
-		let playerSelection = '';
+		let humanChoice = '';
 		if (event.target.classList.contains('rock')) {
-			playerSelection = 'Rock';
-			playRound(playerSelection, getComputerChoice());
+			humanChoice = 'Rock';
+			playRound(humanChoice, getComputerChoice());
 		} else if (event.target.classList.contains('paper')) {
-			playerSelection = 'Paper';
-			playRound(playerSelection, getComputerChoice());
+			humanChoice = 'Paper';
+			playRound(humanChoice, getComputerChoice());
 		} else if (event.target.classList.contains('scissors')) {
-			playerSelection = 'Scissors';
-			playRound(playerSelection, getComputerChoice());
+			humanChoice = 'Scissors';
+			playRound(humanChoice, getComputerChoice());
 		}
 	});
 }
